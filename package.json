@@ -1,0 +1,49 @@
+{
+  "name": "koa2-seed",
+  "version": "1.1.0",
+  "description": "A seed for koa2 project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js --exec babel-node",
+    "build": "babel src -d server",
+    "serve": "NODE_ENV=production node dist/index.js",
+    "test": "mocha"
+  },
+  "keywords": [
+    "koa2",
+    "seed",
+    "boilerplate",
+    "es7"
+  ],
+  "author": "zhuangqh",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-plugin-transform-async-to-generator": "^6.8.0",
+    "eslint-config-airbnb-base": "^5.0.2",
+    "eslint-plugin-async-await": "0.0.0",
+    "mocha": "^3.0.2",
+    "supertest": "^2.0.0"
+  },
+  "dependencies": {
+    "base64-img": "^1.0.3",
+    "bluebird": "^3.4.7",
+    "bulk-require": "^1.0.0",
+    "dateformat": "^2.0.0",
+    "koa": "^2.0.0-alpha.5",
+    "koa-bodyparser": "^3.2.0",
+    "koa-compose": "^3.1.0",
+    "koa-multer": "^1.0.1",
+    "koa-router": "^7.0.1",
+    "koa-session2": "^2.2.2",
+    "koa-static2": "^0.1.8",
+    "lodash": "^4.17.4",
+    "log4js": "^0.6.38",
+    "mongoose": "^4.5.9",
+    "nodemon": "^1.10.0",
+    "request": "^2.81.0",
+    "request-promise": "^4.1.1",
+    "sharp": "^0.17.3",
+    "validator": "^7.0.0"
+  }
+}

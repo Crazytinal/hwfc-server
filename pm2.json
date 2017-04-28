@@ -1,0 +1,15 @@
+{
+"apps": [
+    {
+      "name": "yinlifang",
+      "script": "server/index.js",
+      "instances" : "max",
+      "exec_mode" : "cluster",
+      "watch": false,
+      "log_date_format": "YYYY-MM-DD HH:mm",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}
