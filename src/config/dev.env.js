@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 module.exports = {
   port: 3000,
   static: path.resolve(__dirname, '../../public'),
@@ -7,30 +7,30 @@ module.exports = {
     username: '',
     password: '',
     database: 'hwfc',
-    port: 27017,
+    port: 27017
   },
   log: {
     appenders: [
       {
-        type: 'console',
+        type: 'console'
       },
       {
         type: 'dateFile',
         filename: 'logs/error',
         pattern: '-MM-dd.log',
         alwaysIncludePattern: true,
-        category: 'error',
+        category: 'error'
       },
       {
         type: 'dateFile',
         filename: 'logs/debug',
         pattern: '-MM-dd.log',
         alwaysIncludePattern: true,
-        category: 'debug',
-      },
+        category: 'debug'
+      }
     ],
     levels: {
-      error: 'ALL',
-    },
-  },
-};
+      error: 'ALL'
+    }
+  }
+}

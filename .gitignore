@@ -1,5 +1,5 @@
 server
-node_module
+node_modules
 *.log
 public
 logs
