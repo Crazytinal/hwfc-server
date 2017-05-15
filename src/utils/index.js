@@ -1,20 +1,18 @@
-const _ = require('lodash');
-const log4js = require('./logger');
-const logger = log4js.getLogger('error');
+const _ = require('lodash')
+const log4js = require('./logger')
+const logger = log4js.getLogger('error')
 
-
-function sendData(ctx, data, statusCode = 200) {
-  ctx.status = statusCode;
+function sendData (ctx, data, statusCode = 200) {
+  ctx.status = statusCode
   ctx.body = {
-    data,
-  };
+    data
+  }
 }
 
-function hasEvery(obj, attrArr) {
+function hasEvery (obj, attrArr) {
   // console.log(obj, attrArr)
-  return attrArr.every(key => _.has(obj, key));
+  return attrArr.every(key => _.has(obj, key))
 }
-
 
 /**
  * 检查数据库更新操作的返回值
@@ -22,37 +20,36 @@ function hasEvery(obj, attrArr) {
  * @param ctx
  * @param res
  */
-function handleUpdateResult(ctx, res) {
+function handleUpdateResult (ctx, res) {
   if (res.n === 0) {
-      handleError(ctx, 'element not found', 404);
-      return 'not found';
-    } else if (res.nModified === 0) {
-      handleError(ctx, 'data not modified', 200);
-      return 'not modified';
-    } else {
-      sendData(ctx, 'success operation');
-      return ' success';
-    }
+    handleError(ctx, 'element not found', 404)
+    return 'not found'
+  } else if (res.nModified === 0) {
+    handleError(ctx, 'data not modified', 200)
+    return 'not modified'
+  } else {
+    sendData(ctx, 'success operation')
+    return ' success'
   }
+}
 
-
-function handleError(ctx, err, statusCode = 500) {
-  ctx.status = statusCode;
+function handleError (ctx, err, statusCode = 500) {
+  ctx.status = statusCode
   if (typeof err === 'string') {
-    logger.error(err);
-    ctx.body = {err};
+    logger.error(err)
+    ctx.body = {err}
   }
   // 日志 todo
   // ctx.message = {err};
   // 用于调试
   if (err instanceof Error && process.env.NODE_ENV !== 'production') {
-    ctx.status = 500;
+    ctx.status = 500
     ctx.body = {
       status: 'error',
       cause: err.name,
       message: err.message
-    };
-    logger.error(err.message);
+    }
+    logger.error(err.message)
   }
 }
 
@@ -61,11 +58,9 @@ function handleError(ctx, err, statusCode = 500) {
  * @param Obj
  * @param neededAttrs
  */
-function getMissedAttr(Obj, neededAttrs) {
-  return _.filter(neededAttrs, attr => ! _.has(Obj, attr));
+function getMissedAttr (Obj, neededAttrs) {
+  return _.filter(neededAttrs, attr => !_.has(Obj, attr))
 }
-
-
 
 module.exports = {
   sendData,
@@ -73,4 +68,4 @@ module.exports = {
   handleError,
   getMissedAttr,
   handleUpdateResult
-};
+}
